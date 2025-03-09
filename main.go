@@ -3,10 +3,8 @@ package main
 import (
 	"awesomeProject/cmdmanager"
 	"fmt"
-
 	//"awesomeProject/filemanager"
 	"awesomeProject/prices"
-	//"fmt"
 )
 
 func main() {
