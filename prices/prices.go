@@ -2,15 +2,15 @@ package prices
 
 import (
 	"awesomeProject/conversion"
-	"awesomeProject/filemanager"
+	"awesomeProject/iomanager"
 	"fmt"
 )
 
 type TaxIncludedPriceJob struct {
-	IOManager        filemanager.FileManager `json:"-"`
-	TaxRate          float64                 `json:"tax_rate"`
-	inputPrices      []float64               `json:"input_prices"`
-	TaxIncludedPrice map[string]string       `json:"tax_included_price"`
+	IOManager        iomanager.IOManager `json:"-"`
+	TaxRate          float64             `json:"tax_rate"`
+	inputPrices      []float64           `json:"input_prices"`
+	TaxIncludedPrice map[string]string   `json:"tax_included_price"`
 }
 
 func (job *TaxIncludedPriceJob) LoadData() {
@@ -38,7 +38,7 @@ func (job *TaxIncludedPriceJob) Process() {
 	job.TaxIncludedPrice = result
 	job.IOManager.WriteResult(job)
 }
-func NewTaxIncludedPriceJob(fm filemanager.FileManager, taxRate float64) *TaxIncludedPriceJob {
+func NewTaxIncludedPriceJob(fm iomanager.IOManager, taxRate float64) *TaxIncludedPriceJob {
 	return &TaxIncludedPriceJob{
 		IOManager:   fm,
 		inputPrices: []float64{},
